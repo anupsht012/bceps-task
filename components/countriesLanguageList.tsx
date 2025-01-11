@@ -1,7 +1,7 @@
 import React from 'react'
 import { useQuery, gql } from '@apollo/client';
-import client from '../src/pages/libs/apollo-client';
-import { GET_COUNTRIES_AND_LANGUAGES } from '@/pages/graphql/queries';
+import client from '../src/libs/apollo-client';
+import { GET_COUNTRIES_AND_LANGUAGES } from '@/graphql/queries';
 
 const CountriesLanguagesList = () => {
     const { data, loading, error } = useQuery(GET_COUNTRIES_AND_LANGUAGES, { client });

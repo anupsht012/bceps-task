@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { useQuery } from '@apollo/client';
-import { GET_ALL_COUNTRIES } from '../src/pages/graphql/queries';
-import client from '../src/pages/libs/apollo-client';
+import { GET_ALL_COUNTRIES } from '../src/graphql/queries';
+import client from '../src/libs/apollo-client';
 
 const CountryList: React.FC = () => {
   const { data, loading, error } = useQuery(GET_ALL_COUNTRIES , { client });

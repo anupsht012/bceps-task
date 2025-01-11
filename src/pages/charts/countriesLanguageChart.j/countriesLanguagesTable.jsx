@@ -2,8 +2,8 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useTable, usePagination } from 'react-table';
 import { Table, Button, Dropdown } from 'semantic-ui-react';
-import { GET_ALL_COUNTRIES, GET_COUNTRIES_AND_LANGUAGES } from '../../graphql/queries';
-import client from '../../libs/apollo-client';
+import { GET_ALL_COUNTRIES, GET_COUNTRIES_AND_LANGUAGES } from '../../../graphql/queries';
+import client from '../../../libs/apollo-client';
 import Link from 'next/link';
 
 const CountriesLanguagesTable = () => {
@@ -66,9 +66,9 @@ const CountriesLanguagesTable = () => {
       <Table {...getTableProps()} celled striped>
         <Table.Header>
           {headerGroups.map((headerGroup) => (
-            <Table.Row {...headerGroup.getHeaderGroupProps()}>
+            <Table.Row {...headerGroup.getHeaderGroupProps()} key={headerGroup.id}>
               {headerGroup.headers.map((column) => (
-                <Table.HeaderCell {...column.getHeaderProps()}>
+                <Table.HeaderCell {...column.getHeaderProps()} key={column.id}>
                   {column.render('Header')}
                 </Table.HeaderCell>
               ))}
@@ -80,9 +80,9 @@ const CountriesLanguagesTable = () => {
           {page.map((row) => {
             prepareRow(row);
             return (
-              <Table.Row {...row.getRowProps()}>
-                {row.cells.map((cell) => (
-                  <Table.Cell {...cell.getCellProps()}>{cell.render('Cell')}</Table.Cell>
+              <Table.Row {...row.getRowProps()} key={row.id}>
+                {row.cells.map((cell,key) => (
+                  <Table.Cell {...cell.getCellProps()} key={key} >{cell.render('Cell')}</Table.Cell>
                 ))}
               </Table.Row>
             );

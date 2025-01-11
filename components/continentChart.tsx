@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { Bar, Pie } from 'react-chartjs-2';
 import { Dropdown } from 'semantic-ui-react';
-import { GET_CONTINENTS_DATA } from '@/pages/graphql/queries';
-import client from '@/pages/libs/apollo-client';
+import { GET_CONTINENTS_DATA } from '@/graphql/queries';
+import client from '../src/libs/apollo-client';
 import {
   Chart as ChartJS,
   ArcElement,

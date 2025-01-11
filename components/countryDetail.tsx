@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@apollo/client';
-import { GET_COUNTRY_DETAILS_WITH_CODE } from '@/pages/graphql/queries';
+import { GET_COUNTRY_DETAILS_WITH_CODE } from '@/graphql/queries';
 
 const CountryDetail: React.FC = () => {
   const router = useRouter();

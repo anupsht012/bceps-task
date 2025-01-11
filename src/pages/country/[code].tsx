@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useQuery, gql } from '@apollo/client';
-import client from '../libs/apollo-client';
+import client from '../../libs/apollo-client';
 
 const GET_COUNTRY = gql`
   query GetCountry($code: ID!) {

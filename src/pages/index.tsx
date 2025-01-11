@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
-import { GET_CONTINENTS_DATA } from './graphql/queries';
-import client from './libs/apollo-client';
+import { GET_CONTINENTS_DATA } from '../graphql/queries';
+import client from '../libs/apollo-client';
 import BarChart from './charts/BarChart';
 import CountriesLanguagesList from '../../components/countriesLanguageList';
 import CountriesLanguagesTable from './charts/countriesLanguageChart.j/countriesLanguagesTable.jsx';

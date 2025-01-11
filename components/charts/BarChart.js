@@ -19,9 +19,9 @@ const BarChart = ({ data }) => {
     labels: data?.continents?.map((c) => c.name) || [],
     datasets: [
       {
-        label: '# of Countries',
+        label: 'Number of Countries',
         data: data?.continents?.map((c) => c.countries.length) || [],
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        backgroundColor: 'rgba(29, 882, 52, 0.7)',
         borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
@@ -32,13 +32,13 @@ const BarChart = ({ data }) => {
   const options = {
     responsive: true,
     plugins: {
-      legend: {
-        position: 'top' ,
-      },
-      title: {
-        display: true,
-        text: 'Number of Countries by Continent',
-      },
+      // legend: {
+      //   position: 'top' ,
+      // },
+      // title: {
+      //   display: true,
+      //   text: 'Number of Countries by Continent',
+      // },
       scales: {
         y: {
           beginAtZero: true,

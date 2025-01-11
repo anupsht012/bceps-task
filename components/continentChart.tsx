@@ -15,7 +15,6 @@ import {
   Legend,
 } from 'chart.js';
 
-// Register required Chart.js components
 ChartJS.register(ArcElement, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
 
 const ContinentChart = () => {
@@ -42,7 +41,7 @@ const ContinentChart = () => {
             {
               label: 'Languages per Country',
               data: languageCounts,
-              backgroundColor: 'rgba(54, 162, 235, 0.6)',
+              backgroundColor: 'rgba(59, 16, 275, 0.6)',
               borderColor: 'rgba(54, 162, 235, 1)',
               borderWidth: 1,
             },
@@ -62,86 +61,84 @@ const ContinentChart = () => {
   }));
 
   return (
-    <div className="container mx-auto mt-8 px-4">
-      <h1 className="text-center text-4xl font-bold mb-6">Continent Data</h1>
+    <section className="my-5">
+      <div className="container  mx-auto mt-8 px-4">
+        <h1 className="text-center text-4xl font-bold mb-6">Select to view Continent Data</h1>
 
-      {/* Continent Selector */}
-      <div className="mb-6">
-        <Dropdown
-          placeholder="Select Continent"
-          fluid
-          selection
-          options={continentOptions}
-          onChange={(e, { value }) => setSelectedContinent(value as string)}
-        />
-      </div>
-      <div className='grid grid-cols-2'>
-      {
-    chartData && (
-      <div>
-        <h2 className="text-center text-2xl font-semibold mb-4">
-          Languages Distribution by Country
-        </h2>
-        <Bar
-          data={chartData}
-          options={{
-            responsive: true,
-            scales: {
-              y: {
-                beginAtZero: true,
-                title: {
-                  display: true,
-                  text: 'Number of Languages',
-                },
-              },
-              x: {
-                title: {
-                  display: true,
-                  text: 'Countries',
-                },
-              },
-            },
-          }}
-        />
-      </div>
-    )
-  }
+        <div className="mb-6">
+          <Dropdown
+            placeholder="Select Continent to view language spoken in each country"
+            fluid
+            selection
+            options={continentOptions}
+            onChange={(e, { value }) => setSelectedContinent(value as string)}
+          />
+        </div>
+        {
+          chartData && (
+            <div className="mt-14">
+              <h2 className="text-center text-2xl font-semibold mb-4">
+                Number of languages spoken in Countries
+              </h2>
+              <Bar
+                data={chartData}
+                options={{
+                  responsive: true,
+                  scales: {
+                    y: {
+                      beginAtZero: true,
+                      title: {
+                        display: true,
+                        text: 'Number of Languages',
+                      },
+                    },
+                    x: {
+                      title: {
+                        display: true,
+                        text: 'Countries',
+                      },
+                    },
+                  },
+                }}
+              />
+            </div>
+          )
+        }
+        <hr />
+        {
+          chartData && (
+            <div className="flex flex-col align-middle mt-14" style={{ width: '50rem', height: '50rem' }}>
+              <h2 className="text-center text-2xl font-semibold mb-4">
+                Countries and Languages
+              </h2>
+              <Pie
+                data={{
+                  datasets: [
+                    {
+                      label: 'Language',
+                      data: chartData.datasets[0].data,
+                      backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                      ],
+                      borderWidth: 1,
+                    },
+                  ],
+                  labels: chartData.labels,
 
-{
-    chartData && (
-      <div className="mt-8">
-        <h2 className="text-center text-2xl font-semibold mb-4">
-          Language Proportion
-        </h2>
-        <Pie
-          data={{
-            labels: chartData.labels,
-            datasets: [
-              {
-                label: 'Language Proportion',
-                data: chartData.datasets[0].data,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.6)',
-                  'rgba(54, 162, 235, 0.6)',
-                  'rgba(255, 206, 86, 0.6)',
-                  'rgba(75, 192, 192, 0.6)',
-                  'rgba(153, 102, 255, 0.6)',
-                ],
-                borderWidth: 1,
-              },
-            ],
-          }}
-        />
-      </div>
-    )
-  }
+                }}
+              />
+            </div>
+          )
+        }
 
-    </div>
-      
-     
-  {/* Optional Pie Chart */ }
 
-    </div >
+
+      </div >
+    </section>
   );
 };
 

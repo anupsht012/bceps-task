@@ -21,6 +21,6 @@
     "strict": true, // Optional: Enables strict type-checking
     "moduleResolution": "node"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/charts/BarChart.js", "src/pages/charts/countriesLanguageChart.j/countriesLanguagesTable.jsx", "components/countryDetail.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/charts/BarChart.js", "components/charts/countriesLanguageChart.j/countriesLanguagesTable.jsx", "components/countryDetail.tsx"],
   "exclude": ["node_modules"]
 }

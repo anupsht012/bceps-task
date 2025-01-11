@@ -2,12 +2,13 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import { useTable, usePagination } from 'react-table';
 import { Table, Button, Dropdown } from 'semantic-ui-react';
-import { GET_ALL_COUNTRIES, GET_COUNTRIES_AND_LANGUAGES } from '../../../graphql/queries';
-import client from '../../../libs/apollo-client';
 import Link from 'next/link';
+import { GET_COUNTRIES_AND_LANGUAGES } from '@/graphql/queries';
+import client from '../src/libs/apollo-client';
 
-const CountriesLanguagesTable = () => {
-  const { data, loading, error } = useQuery(GET_COUNTRIES_AND_LANGUAGES, { client });
+
+export const CountriesLanguagesTable = () => {
+  const { data } = useQuery(GET_COUNTRIES_AND_LANGUAGES, { client });
 
   const formattedData = React.useMemo(() => {
     if (!data) return [];
@@ -37,7 +38,7 @@ const CountriesLanguagesTable = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    page, // Changed from rows to page for pagination
+    page, 
     prepareRow,
     state: { pageIndex, pageSize },
     canPreviousPage,
@@ -56,12 +57,11 @@ const CountriesLanguagesTable = () => {
     usePagination
   );
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
   return (
-    <div className="container mx-auto mt-8 px-4">
-      <h1 className="text-center text-violet-500 text-5xl mt-12">Countries and Languages</h1>
+  <section className="py-10 mt-10">
+      <div className="container mx-auto mt-8 px-4">
+      <h1 className="text-center text-violet-300 text-5xl mt-12">Displaying Countries and Languages using react-table</h1>
+      <p className='text-center'>(*Click in the country for detailed information*)</p>
 
       <Table {...getTableProps()} celled striped>
         <Table.Header>
@@ -123,7 +123,6 @@ const CountriesLanguagesTable = () => {
       </div>
      </div>
     </div>
+  </section>
   );
 };
-
-export default CountriesLanguagesTable;

@@ -1,22 +1,26 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    // "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    // "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
+    // "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    // "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "lib": ["dom", "esnext"], // Includes DOM types for JSX
+    "esModuleInterop": true, // Ensures proper module import behavior
+    "strict": true, // Optional: Enables strict type-checking
+    "moduleResolution": "node"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/charts/BarChart.js", "src/pages/charts/countriesLanguageChart.j/countriesLanguagesTable.jsx", "components/countryDetail.tsx"],
   "exclude": ["node_modules"]
 }
